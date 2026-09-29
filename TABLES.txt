@@ -1,0 +1,229 @@
+-- customer table
+
+
+create table customer (
+customer_id int primary key,
+name varchar2(50) not null,
+phone varchar2(15) unique not null,
+email varchar2(50) unique not null,
+address varchar2(100) not null
+);
+
+insert into customer values (1, 'ravi', '9876543210', 'ravi@gmail.com', 'tirupati');
+insert into customer values (2, 'sravani', '9876543211', 'sravani@gmail.com', 'hyderabad');
+insert into customer values (3, 'kiran', '9876543212', 'kiran@gmail.com', 'vijayawada');
+insert into customer values (4, 'anusha', '9876543213', 'anusha@gmail.com', 'guntur');
+insert into customer values (5, 'prakash', '9876543214', 'prakash@gmail.com', 'nellore');
+insert into customer values (6, 'divya', '9876543215', 'divya@gmail.com', 'chittoor');
+insert into customer values (7, 'arjun', '9876543216', 'arjun@gmail.com', 'kadapa');
+insert into customer values (8, 'meena', '9876543217', 'meena@gmail.com', 'kurnool');
+insert into customer values (9, 'rahul', '9876543218', 'rahul@gmail.com', 'ongole');
+insert into customer values (10, 'pooja', '9876543219', 'pooja@gmail.com', 'nellore');
+insert into customer values (11, 'sandeep', '9876543220', 'sandeep@gmail.com', 'tirupati');
+insert into customer values (12, 'keerthi', '9876543221', 'keerthi@gmail.com', 'hyderabad');
+insert into customer values (13, 'manoj', '9876543222', 'manoj@gmail.com', 'guntur');
+insert into customer values (14, 'swathi', '9876543223', 'swathi@gmail.com', 'vijayawada');
+insert into customer values (15, 'vamsi', '9876543224', 'vamsi@gmail.com', 'chittoor');
+
+
+-- employee table
+
+
+create table employee (
+employee_id int primary key,
+name varchar2(50) not null,
+phone varchar2(15) unique not null,
+email varchar2(50) unique not null,
+role varchar2(30) not null
+);
+
+insert into employee values (101, 'suresh', '9000000001', 'suresh@gmail.com', 'manager');
+insert into employee values (102, 'lakshmi', '9000000002', 'lakshmi@gmail.com', 'waiter');
+insert into employee values (103, 'ramesh', '9000000003', 'ramesh@gmail.com', 'cashier');
+insert into employee values (104, 'harika', '9000000004', 'harika@gmail.com', 'waiter');
+insert into employee values (105, 'venkatesh', '9000000005', 'venkatesh@gmail.com', 'cashier');
+insert into employee values (106, 'deepa', '9000000006', 'deepa@gmail.com', 'waiter');
+insert into employee values (107, 'mahesh', '9000000007', 'mahesh@gmail.com', 'waiter');
+insert into employee values (108, 'kavya', '9000000008', 'kavya@gmail.com', 'cashier');
+insert into employee values (109, 'naveen', '9000000009', 'naveen@gmail.com', 'waiter');
+insert into employee values (110, 'srikanth', '9000000010', 'srikanth@gmail.com', 'manager');
+insert into employee values (111, 'bhavya', '9000000011', 'bhavya@gmail.com', 'waiter');
+insert into employee values (112, 'rohit', '9000000012', 'rohit@gmail.com', 'cashier');
+insert into employee values (113, 'sindhu', '9000000013', 'sindhu@gmail.com', 'waiter');
+insert into employee values (114, 'tarun', '9000000014', 'tarun@gmail.com', 'waiter');
+insert into employee values (115, 'rekha', '9000000015', 'rekha@gmail.com', 'cashier');
+
+
+-- dining_table table
+
+
+create table dining_table (
+table_id int primary key,
+capacity int not null,
+status varchar2(20) not null
+);
+
+insert into dining_table values (1, 2, 'available');
+insert into dining_table values (2, 4, 'occupied');
+insert into dining_table values (3, 4, 'available');
+insert into dining_table values (4, 6, 'occupied');
+insert into dining_table values (5, 8, 'available');
+insert into dining_table values (6, 2, 'available');
+insert into dining_table values (7, 4, 'occupied');
+insert into dining_table values (8, 6, 'available');
+insert into dining_table values (9, 8, 'occupied');
+insert into dining_table values (10, 2, 'available');
+insert into dining_table values (11, 4, 'available');
+insert into dining_table values (12, 6, 'occupied');
+insert into dining_table values (13, 8, 'available');
+insert into dining_table values (14, 4, 'occupied');
+insert into dining_table values (15, 6, 'available');
+
+
+-- menu table
+
+
+create table menu (
+item_id int primary key,
+item_name varchar2(50) not null,
+category varchar2(30) not null,
+price number(10,2) not null,
+availability varchar2(20) not null
+);
+
+insert into menu values (101, 'chicken biryani', 'biryani', 250, 'yes');
+insert into menu values (102, 'paneer biryani', 'biryani', 220, 'yes');
+insert into menu values (103, 'masala dosa', 'tiffin', 80, 'yes');
+insert into menu values (104, 'idly', 'tiffin', 50, 'yes');
+insert into menu values (105, 'chicken noodles', 'noodles', 180, 'yes');
+insert into menu values (106, 'veg fried rice', 'rice', 150, 'yes');
+insert into menu values (107, 'gulab jamun', 'dessert', 60, 'yes');
+insert into menu values (108, 'mutton biryani', 'biryani', 320, 'yes');
+insert into menu values (109, 'veg noodles', 'noodles', 130, 'yes');
+insert into menu values (110, 'veg pulao', 'rice', 140, 'yes');
+insert into menu values (111, 'chicken 65', 'starter', 200, 'yes');
+insert into menu values (112, 'paneer tikka', 'starter', 190, 'yes');
+insert into menu values (113, 'ice cream', 'dessert', 90, 'yes');
+insert into menu values (114, 'coffee', 'beverage', 40, 'yes');
+insert into menu values (115, 'fresh lime juice', 'beverage', 70, 'yes');
+
+
+-- orders table
+
+create table orders (
+order_id int primary key,
+customer_id int not null,
+employee_id int not null,
+table_id int not null,
+order_date date not null,
+order_time varchar2(8) not null,
+order_status varchar2(20) not null,
+foreign key (customer_id) references customer(customer_id),
+foreign key (employee_id) references employee(employee_id),
+foreign key (table_id) references dining_table(table_id)
+);
+
+insert into orders values (501, 1, 102, 2, date '2026-09-20', '13:00:00', 'completed');
+insert into orders values (502, 2, 104, 4, date '2026-09-20', '14:00:00', 'completed');
+insert into orders values (503, 3, 106, 1, date '2026-09-21', '12:30:00', 'pending');
+insert into orders values (504, 4, 104, 3, date '2026-09-21', '19:00:00', 'completed');
+insert into orders values (505, 5, 107, 5, date '2026-09-22', '20:00:00', 'pending');
+insert into orders values (506, 6, 109, 7, date '2026-09-22', '13:15:00', 'completed');
+insert into orders values (507, 7, 111, 8, date '2026-09-23', '14:30:00', 'completed');
+insert into orders values (508, 8, 113, 9, date '2026-09-23', '19:30:00', 'pending');
+insert into orders values (509, 9, 114, 10, date '2026-09-24', '12:45:00', 'completed');
+insert into orders values (510, 10, 102, 11, date '2026-09-24', '20:00:00', 'completed');
+insert into orders values (511, 11, 104, 12, date '2026-09-25', '13:30:00', 'pending');
+insert into orders values (512, 12, 106, 13, date '2026-09-25', '18:45:00', 'completed');
+insert into orders values (513, 13, 107, 14, date '2026-09-25', '19:15:00', 'completed');
+insert into orders values (514, 14, 109, 15, date '2026-09-25', '20:30:00', 'pending');
+insert into orders values (515, 15, 111, 6, date '2026-09-26', '12:00:00', 'completed');
+
+
+-- order_item table
+
+
+create table order_item (
+order_id int,
+item_id int,
+quantity int not null,
+unit_price number(10,2) not null,
+primary key (order_id, item_id),
+foreign key (order_id) references orders(order_id),
+foreign key (item_id) references menu(item_id)
+);
+
+insert into order_item values (501, 101, 2, 250);
+insert into order_item values (502, 103, 2, 80);
+insert into order_item values (503, 104, 3, 50);
+insert into order_item values (504, 102, 2, 220);
+insert into order_item values (505, 105, 2, 180);
+insert into order_item values (506, 106, 2, 150);
+insert into order_item values (507, 108, 1, 320);
+insert into order_item values (508, 109, 2, 130);
+insert into order_item values (509, 110, 2, 140);
+insert into order_item values (510, 111, 1, 200);
+insert into order_item values (511, 112, 2, 190);
+insert into order_item values (512, 113, 3, 90);
+insert into order_item values (513, 114, 4, 40);
+insert into order_item values (514, 115, 3, 70);
+insert into order_item values (515, 101, 1, 250);
+
+
+-- bill table
+
+
+create table bill (
+bill_id int primary key,
+order_id int unique not null,
+bill_date date not null,
+total_amount number(10,2) not null,
+discount number(10,2) default 0,
+foreign key (order_id) references orders(order_id)
+);
+
+insert into bill values (1001, 501, date '2026-09-20', 500, 20);
+insert into bill values (1002, 502, date '2026-09-20', 160, 10);
+insert into bill values (1003, 503, date '2026-09-21', 150, 0);
+insert into bill values (1004, 504, date '2026-09-21', 440, 0);
+insert into bill values (1005, 505, date '2026-09-22', 360, 20);
+insert into bill values (1006, 506, date '2026-09-22', 300, 0);
+insert into bill values (1007, 507, date '2026-09-23', 320, 20);
+insert into bill values (1008, 508, date '2026-09-23', 260, 10);
+insert into bill values (1009, 509, date '2026-09-24', 280, 0);
+insert into bill values (1010, 510, date '2026-09-24', 200, 0);
+insert into bill values (1011, 511, date '2026-09-25', 380, 30);
+insert into bill values (1012, 512, date '2026-09-25', 270, 0);
+insert into bill values (1013, 513, date '2026-09-25', 160, 10);
+insert into bill values (1014, 514, date '2026-09-25', 210, 0);
+insert into bill values (1015, 515, date '2026-09-26', 250, 0);
+
+
+-- payment table
+
+
+create table payment (
+payment_id int primary key,
+bill_id int unique not null,
+payment_date date not null,
+amount number(10,2) not null,
+status varchar2(20) not null,
+payment_type varchar2(20) not null,
+foreign key (bill_id) references bill(bill_id)
+);
+
+insert into payment values (2001, 1001, date '2026-09-20', 480, 'paid', 'upi');
+insert into payment values (2002, 1002, date '2026-09-20', 150, 'paid', 'cash');
+insert into payment values (2003, 1003, date '2026-09-21', 150, 'paid', 'card');
+insert into payment values (2004, 1004, date '2026-09-21', 440, 'paid', 'upi');
+insert into payment values (2005, 1005, date '2026-09-22', 340, 'paid', 'cash');
+insert into payment values (2006, 1006, date '2026-09-22', 300, 'paid', 'upi');
+insert into payment values (2007, 1007, date '2026-09-23', 300, 'paid', 'card');
+insert into payment values (2008, 1008, date '2026-09-23', 250, 'paid', 'upi');
+insert into payment values (2009, 1009, date '2026-09-24', 280, 'paid', 'cash');
+insert into payment values (2010, 1010, date '2026-09-24', 200, 'paid', 'card');
+insert into payment values (2011, 1011, date '2026-09-25', 350, 'paid', 'upi');
+insert into payment values (2012, 1012, date '2026-09-25', 270, 'paid', 'cash');
+insert into payment values (2013, 1013, date '2026-09-25', 150, 'paid', 'upi');
+insert into payment values (2014, 1014, date '2026-09-25', 210, 'paid', 'card');
+insert into payment values (2015, 1015, date '2026-09-26', 250, 'paid', 'cash');

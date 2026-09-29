@@ -1,0 +1,124 @@
+CREATE TABLE ORDER_DETAILS_1NF (
+    ORDER_ID NUMBER,
+    ITEM_ID NUMBER,
+    CUSTOMER_ID NUMBER,
+    CUSTOMER_NAME VARCHAR2(50),
+    EMPLOYEE_ID NUMBER,
+    EMPLOYEE_NAME VARCHAR2(50),
+    TABLE_ID NUMBER,
+    ORDER_DATE DATE,
+    ORDER_TIME VARCHAR2(8),
+    ORDER_STATUS VARCHAR2(20),
+    ITEM_NAME VARCHAR2(50),
+    CATEGORY VARCHAR2(30),
+    PRICE NUMBER(10,2),
+    QUANTITY NUMBER,
+    UNIT_PRICE NUMBER(10,2),
+
+    PRIMARY KEY (ORDER_ID, ITEM_ID)
+);
+CREATE TABLE orders_2nf (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    customer_name VARCHAR2(50),
+    employee_id INT,
+    employee_name VARCHAR2(50),
+    table_id INT,
+    order_date DATE,
+    order_time VARCHAR2(8),
+    order_status VARCHAR2(20)
+);
+CREATE TABLE menu_2nf (
+    item_id INT PRIMARY KEY,
+    item_name VARCHAR2(50),
+    category VARCHAR2(30),
+    price NUMBER(10,2),
+    availability VARCHAR2(20)
+);
+CREATE TABLE order_item_2nf (
+    order_id INT,
+    item_id INT,
+    quantity INT,
+    unit_price NUMBER(10,2),
+
+    PRIMARY KEY (order_id, item_id)
+);
+CREATE TABLE customer (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR2(50),
+    phone VARCHAR2(15),
+    email VARCHAR2(50),
+    address VARCHAR2(100)
+);
+CREATE TABLE employee (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR2(50),
+    phone VARCHAR2(15),
+    email VARCHAR2(50),
+    role VARCHAR2(30)
+);
+CREATE TABLE dining_table (
+    table_id INT PRIMARY KEY,
+    capacity INT,
+    status VARCHAR2(20)
+);
+CREATE TABLE menu (
+    item_id INT PRIMARY KEY,
+    item_name VARCHAR2(50),
+    category VARCHAR2(30),
+    price NUMBER(10,2),
+    availability VARCHAR2(20)
+);
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    employee_id INT,
+    table_id INT,
+    order_date DATE,
+    order_time VARCHAR2(8),
+    order_status VARCHAR2(20),
+
+    FOREIGN KEY (customer_id)
+        REFERENCES customer(customer_id),
+
+    FOREIGN KEY (employee_id)
+        REFERENCES employee(employee_id),
+
+    FOREIGN KEY (table_id)
+        REFERENCES dining_table(table_id)
+);
+CREATE TABLE order_item (
+    order_id INT,
+    item_id INT,
+    quantity INT,
+    unit_price NUMBER(10,2),
+
+    PRIMARY KEY (order_id, item_id),
+
+    FOREIGN KEY (order_id)
+        REFERENCES orders(order_id),
+
+    FOREIGN KEY (item_id)
+        REFERENCES menu(item_id)
+);
+CREATE TABLE bill (
+    bill_id INT PRIMARY KEY,
+    order_id INT UNIQUE,
+    bill_date DATE,
+    total_amount NUMBER(10,2),
+    discount NUMBER(10,2),
+
+    FOREIGN KEY (order_id)
+        REFERENCES orders(order_id)
+);
+CREATE TABLE payment (
+    payment_id INT PRIMARY KEY,
+    bill_id INT UNIQUE,
+    payment_date DATE,
+    amount NUMBER(10,2),
+    status VARCHAR2(20),
+    payment_type VARCHAR2(20),
+
+    FOREIGN KEY (bill_id)
+        REFERENCES bill(bill_id)
+);

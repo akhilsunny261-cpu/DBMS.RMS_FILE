@@ -1,0 +1,89 @@
+-- 1. display all customers
+
+select * from customer;
+
+-- 2. display customers from hyderabad
+
+select customer_id, name, phone
+from customer
+where address = 'hyderabad';
+
+-- 3. display menu items with price greater than 150
+
+select item_name, price
+from menu
+where price > 150;
+
+-- 4. display available dining tables
+
+select table_id, capacity
+from dining_table
+where status = 'available';
+
+-- 5. display completed orders
+
+select order_id, customer_id, order_date
+from orders
+where order_status = 'completed';
+
+-- 6. find the highest menu price
+
+select max(price) as highest_price
+from menu;
+
+-- 7. count total customers
+
+select count(*) as total_customers
+from customer;
+
+
+1. Customer-wise order details
+
+SELECT o.order_id, c.name, o.order_date, o.order_status
+FROM orders o
+JOIN customer c
+ON o.customer_id = c.customer_id;
+
+2. Order items with menu details
+
+SELECT oi.order_id, m.item_name, oi.quantity, oi.unit_price
+FROM order_item oi
+JOIN menu m
+ON oi.item_id = m.item_id;
+
+3. Total sales by payment type
+
+SELECT payment_type, SUM(amount) AS total_amount
+FROM payment
+GROUP BY payment_type;
+
+4. Number of orders handled by each employee
+
+SELECT e.employee_id, e.name, COUNT(o.order_id) AS total_orders
+FROM employee e
+JOIN orders o
+ON e.employee_id = o.employee_id
+GROUP BY e.employee_id, e.name;
+
+5. Categories with average price above 150
+
+SELECT category, AVG(price) AS average_price
+FROM menu
+GROUP BY category
+HAVING AVG(price) > 150;
+
+6. Customers whose bill amount is greater than 300
+
+SELECT c.name, b.bill_id, b.total_amount
+FROM customer c
+JOIN orders o
+ON c.customer_id = o.customer_id
+JOIN bill b
+ON o.order_id = b.order_id
+WHERE b.total_amount > 300;
+
+7. Most expensive menu item
+
+SELECT item_name, price
+FROM menu
+WHERE price = (SELECT MAX(price) FROM menu);
