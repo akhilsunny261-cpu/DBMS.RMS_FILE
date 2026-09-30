@@ -82,6 +82,7 @@ JOIN bill b
 ON o.order_id = b.order_id
 WHERE b.total_amount > 300;
 
+
 7. Most expensive menu item
 
 SELECT item_name, price
